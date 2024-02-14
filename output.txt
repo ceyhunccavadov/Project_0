@@ -1,0 +1,5 @@
+7  is prime
+12  is not prime
+3  is prime
+4  is not prime
+2  is not prime
