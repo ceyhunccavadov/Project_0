@@ -1,50 +1,45 @@
 import java.io.*;
 import java.util.ArrayList;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+
 public class Main {
     public static void main(String[] args) {
         String path = "C:\\Users\\jj031912\\Desktop\\input.txt";
-        ArrayList<String> inputs = readIntInputs(path);
-        for (int i = 0;i<inputs.size();i++){
-            System.out.println(inputs.get(i));
-        }
+        ArrayList<Integer> inputs = readIntInputs(path);
 
-//        File outputFile = new File( "C:\\Users\\jj031912\\Desktop\\output.txt");
         try {
-//            outputFile.createNewFile();
             BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt", true));
             for (int i = 0;i<inputs.size();i++){
-                writer.append(inputs.get(i));
-                writer.append("\n");
-            }
 
+                    if (inputs.get(i) % 2 == 0) {
+                        writer.append(inputs.get(i)+"  is not prime"+"\n");
+                    }else {
+                        writer.append(inputs.get(i) + "  is prime" + "\n");
+                    }
+
+
+            }
             writer.close();
 
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+            } catch (IOException ex) {
+            throw new RuntimeException(ex);
         }
 
     }
-    public static ArrayList<String> readIntInputs(String path){
+
+        public static ArrayList<Integer> readIntInputs(String path){
         File file = new File(path);
-        ArrayList<String> inputs = new ArrayList<>();
+        ArrayList<Integer> inputs = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-            String line;
             int numberOfLines = Integer.parseInt(br.readLine());
             for (int i = 0;i<numberOfLines;i++){
-                inputs.add(br.readLine());
+                inputs.add(Integer.parseInt(br.readLine()));
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }
         return inputs;
     }
 
-    public static void writeIsPrime(ArrayList<String> inputs){
-        int numberOfLines = Integer.parseInt(inputs.get(0));
 
-    }
 }
